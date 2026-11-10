@@ -17,7 +17,7 @@ build:
       SETUPTOOLS_SCM_PRETEND_VERSION: ${{ version }}
     content: |
       "${{ PYTHON }}" -m pip install . -vv --no-deps --no-build-isolation
-      "${{ PYTHON }}" "${{ RECIPE_DIR }}/scripts/install-activation.py"
+      "${{ PYTHON }}" "${{ RECIPE_DIR }}/scripts/install-plugin-shims.py"
 
   python:
     entry_points:
@@ -50,14 +50,12 @@ tests:
       - imas-paraview --help
       - ggd2vtk --help
       - vtk2ggd --help
-      - python test-activation.py
       - pvpython test-plugin.py
     requirements:
       run:
         - python ${{ python_min }}.*
     files:
       recipe:
-        - test-activation.py
         - test-plugin.py
 
 about:
